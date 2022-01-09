@@ -1,4 +1,4 @@
 # Contribution Guide
 
-The Laravel contributing guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The Laravel contributing guide can be found in the [Wiki](https://github.com/KinoriTech/soyokaze/wiki/contributions).
 

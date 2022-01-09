@@ -1,16 +1,16 @@
 {
-    "name": "laravel/breeze",
-    "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
-    "keywords": ["laravel", "auth"],
+    "name": "kinoritech/soyokaze",
+    "description": "Minimal Laravel authentication scaffolding with Blade and Metro 4.",
+    "keywords": ["laravel", "auth", "metro"],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel/breeze/issues",
-        "source": "https://github.com/laravel/breeze"
+        "issues": "https://github.com/KinoriTech/soyokaze/issues",
+        "source": "https://github.com/KinoriTech/soyokaze"
     },
     "authors": [
         {
-            "name": "Taylor Otwell",
-            "email": "taylor@laravel.com"
+            "name": "Horacio Hoyos Rodriguez",
+            "email": "h.hoyos.r@kinori.tech"
         }
     ],
     "require": {
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\Breeze\\": "src/"
+            "KinoriTech\\Soyokaze\\": "src/"
         }
     },
     "extra": {
@@ -30,7 +30,7 @@
         },
         "laravel": {
             "providers": [
-                "Laravel\\Breeze\\BreezeServiceProvider"
+                "KinoriTech\\Soyokaze\\SoyokazeServiceProvider"
             ]
         }
     },
