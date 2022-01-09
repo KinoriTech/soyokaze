@@ -7,7 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 trait InstallsMetroStack
 {
     /**
-     * Install the Blade Breeze stack.
+     * Install the Metro 4 Soyokaze stack.
      *
      * @return void
      */

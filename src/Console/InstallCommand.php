@@ -16,7 +16,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'breeze:install {stack=metro : The development stack that should be installed (metro, api)}
+    protected $signature = 'soyozake:install {stack=metro : The development stack that should be installed (metro, api)}
                             {--inertia : Indicate that the Vue Inertia stack should be installed (Deprecated)}
                             {--pest : Indicate that Pest should be installed }
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
@@ -26,7 +26,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Install the Breeze controllers and resources';
+    protected $description = 'Install the Soyokaze controllers and resources';
 
     /**
      * Execute the console command.
@@ -43,7 +43,7 @@ class InstallCommand extends Command
     }
 
     /**
-     * Install Breeze's tests.
+     * Install Soyokaze's tests.
      *
      * @return void
      */

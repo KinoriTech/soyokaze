@@ -7,7 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 trait InstallsApiStack
 {
     /**
-     * Install the API Breeze stack.
+     * Install the API Soyokaze stack.
      *
      * @return void
      */
@@ -70,7 +70,7 @@ trait InstallsApiStack
         // Cleaning...
         $this->removeScaffoldingUnnecessaryForApis();
 
-        $this->info('Breeze scaffolding installed successfully.');
+        $this->info('Soyokaze scaffolding installed successfully.');
     }
 
     /**
