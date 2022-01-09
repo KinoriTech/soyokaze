@@ -55,7 +55,7 @@ class InstallCommand extends Command
     {
         (new Filesystem)->ensureDirectoryExists(base_path('tests/Feature/Auth'));
 
-        $stubStack = $this->argument('stack') === 'api' ? 'api' : 'default';
+        $stubStack = $this->argument('stack') === 'api' ? 'api' : 'metro4';
 
         if ($this->option('pest')) {
             $this->requireComposerPackages('pestphp/pest:^1.16', 'pestphp/pest-plugin-laravel:^1.1');
