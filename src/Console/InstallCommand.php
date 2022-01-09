@@ -16,7 +16,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'soyozake:install {stack=metro : The development stack that should be installed (metro, api)}
+    protected $signature = 'soyokaze:install {stack=metro : The development stack that should be installed (metro, api)}
                             {--inertia : Indicate that the Vue Inertia stack should be installed (Deprecated)}
                             {--pest : Indicate that Pest should be installed }
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
