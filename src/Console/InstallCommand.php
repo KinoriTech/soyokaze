@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Breeze\Console;
+namespace KinoriTech\Soyokaze\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -9,14 +9,14 @@ use Symfony\Component\Process\Process;
 
 class InstallCommand extends Command
 {
-    use InstallsApiStack, InstallsBladeStack, InstallsInertiaStacks;
+    use InstallsApiStack, InstallsMetroStack;
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'breeze:install {stack=blade : The development stack that should be installed (blade,react,vue,api)}
+    protected $signature = 'breeze:install {stack=metro : The development stack that should be installed (metro, api)}
                             {--inertia : Indicate that the Vue Inertia stack should be installed (Deprecated)}
                             {--pest : Indicate that Pest should be installed }
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
@@ -35,14 +35,10 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if ($this->option('inertia') || $this->argument('stack') === 'vue') {
-            return $this->installInertiaVueStack();
-        } elseif ($this->argument('stack') === 'react') {
-            return $this->installInertiaReactStack();
-        } elseif ($this->argument('stack') === 'api') {
+        if ($this->argument('stack') === 'api') {
             return $this->installApiStack();
         } else {
-            return $this->installBladeStack();
+            return $this->installMetroStack();
         }
     }
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Breeze;
+namespace KinoriTech\Soyokaze;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class BreezeServiceProvider extends ServiceProvider implements DeferrableProvider
+class SoyokazeServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register any application services.

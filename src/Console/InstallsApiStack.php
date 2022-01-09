@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Breeze\Console;
+namespace KinoriTech\Soyokaze\Console;
 
 use Illuminate\Filesystem\Filesystem;
 
