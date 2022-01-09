@@ -3,6 +3,7 @@
 namespace KinoriTech\Soyokaze\Console;
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 trait InstallsMetroStack
 {
