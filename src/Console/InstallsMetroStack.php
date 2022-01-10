@@ -79,7 +79,7 @@ trait InstallsMetroStack
     }
 
     /**
-     * Add the ajax middleware to the $middlewareGroups in the application Http Kernel.
+     * Add the ajax middleware to the $middlewareGroups and the $routeMiddleware in the application Http Kernel.
      *
      * @return void
      */
@@ -89,22 +89,31 @@ trait InstallsMetroStack
 
         $middlewareGroups = Str::before(Str::after($httpKernel, '$middlewareGroups = ['), '];');
 
-        $ajaxMiddleware = "        ajax' => [
+        $ajaxMiddleware = "        'ajax' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],";
 
-        $modifiedMiddlewareGroups = str_replace(
-            '];',
-            PHP_EOL.$ajaxMiddleware.','.PHP_EOL.'    ];',
-            $middlewareGroups,
-        );
-        file_put_contents(app_path('Http/Kernel.php'), str_replace(
+        $modifiedMiddlewareGroups = $middlewareGroups.PHP_EOL.$ajaxMiddleware.PHP_EOL;
+
+        $modifiedHttpKernel = str_replace(
             $middlewareGroups,
             $modifiedMiddlewareGroups,
             $httpKernel
-        ));
+        );
+
+        $routeMiddleware = Str::before(Str::after($httpKernel, '$routeMiddleware = ['), '];');
+        $modifiedRouteMiddleware = $routeMiddleware."    'ajax' => \App\Http\Middleware\Ajax::class,".PHP_EOL;
+
+        $modifiedHttpKernel = str_replace(
+            $routeMiddleware,
+            $modifiedRouteMiddleware,
+            $modifiedHttpKernel
+        );
+
+        file_put_contents(app_path('Http/Kernel.php'), $modifiedHttpKernel);
+
     }
 
     /**
