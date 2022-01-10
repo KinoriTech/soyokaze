@@ -29,8 +29,8 @@ trait InstallsMetroStack
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/metro4/App/Http/Controllers/Auth', app_path('Http/Controllers/Auth'));
 
         // Middleware...
-        (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers/Middleware'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/metro4/App/Http/Controllers/Middleware', app_path('Http/Controllers/Middleware'));
+        (new Filesystem)->ensureDirectoryExists(app_path('Http/Middleware'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/metro4/App/Http/Middleware', app_path('Http/Middleware'));
         $this->installAjaxMiddleware();
 
         // RouteServiceProvider...
@@ -116,16 +116,15 @@ trait InstallsMetroStack
 
         $bootFunction = Str::before(Str::after($routeServiceProvider, 'public function boot()'), '}'.PHP_EOL);
 
-        $ajaxRoute = '$this->routes(function () {
-            Route::prefix(\'ajax\')
+        $ajaxRoute = 'Route::prefix(\'ajax\')
                 ->name(\'ajax.\')
                 ->middleware(\'ajax\')
                 ->namespace($this->namespace)
                 ->group(base_path(\'routes/ajax.php\'));';
 
         $modifiedBootFunction = str_replace(
-            '$this->configureRateLimiting();',
-            '$this->configureRateLimiting();'.PHP_EOL.$ajaxRoute.PHP_EOL,
+            '$this->routes(function () {',
+            '$this->routes(function () {'.PHP_EOL.'             '.$ajaxRoute.PHP_EOL,
             $bootFunction,
         );
         file_put_contents(app_path('Providers/RouteServiceProvider.php'), str_replace(
