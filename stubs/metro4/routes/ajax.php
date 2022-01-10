@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*
- * Register API routes using auth middleware
+ * Register API routes using ajax middleware
  */
 Route::middleware('ajax')->group(function () {
 });
 
 //Supplement the put method as Laravel does not distinguish between put and patch
-// Your Model class should have a 'replace' method ti handle puts.
+// Your Model class should have a 'replace' method to handle puts.
 //Route::put('/', [<Model>Controller::class, 'replace']);

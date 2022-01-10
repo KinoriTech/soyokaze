@@ -69,8 +69,10 @@ trait InstallsMetroStack
 
         // Webpack...
         copy(__DIR__ . '/../../stubs/metro4/webpack.mix.js', base_path('webpack.mix.js'));
-        copy(__DIR__ . '/../../stubs/metro4/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/metro4/resources/js/app.js', resource_path('js/app.js'));
+        copy(__DIR__ . '/../../stubs/metro4/resources/css/app.less', resource_path('css/app.less'));
+        (new Filesystem)->ensureDirectoryExists(resource_path('images'));
+        copy(__DIR__ . '/../../art/socialcard.png', resource_path('images/socialcard.png'));
 
         $this->info('Soyosake scaffolding installed successfully.');
         $this->comment('Please execute the "npm install && npm run dev" command to build your assets.');
@@ -87,7 +89,7 @@ trait InstallsMetroStack
 
         $middlewareGroups = Str::before(Str::after($httpKernel, '$middlewareGroups = ['), '];');
 
-        $ajaxMiddleware = "'api' => [
+        $ajaxMiddleware = "        ajax' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -95,7 +97,7 @@ trait InstallsMetroStack
 
         $modifiedMiddlewareGroups = str_replace(
             '];',
-            $ajaxMiddleware.','.PHP_EOL.'    ];',
+            PHP_EOL.$ajaxMiddleware.','.PHP_EOL.'    ];',
             $middlewareGroups,
         );
         file_put_contents(app_path('Http/Kernel.php'), str_replace(
